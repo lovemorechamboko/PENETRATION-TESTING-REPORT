@@ -1,10 +1,16 @@
 # PENETRATION-TESTING-REPORT
-FOOTPRINTING &amp; NETWORK SCANNING PHASES
 
-# Liability Disclaimer
+
+## 🔍 FOOTPRINTING &amp; NETWORK SCANNING PHASES
+
+![Cybersecurity](https://img.shields.io/badge/Domain-Cybersecurity-blue)
+![Status](https://img.shields.io/badge/Status-Completed-green)
+![Level](https://img.shields.io/badge/Level-Beginner-orange)
+
+## Liability Disclaimer
 I have performed these activities only on the systems & devices where I had secured written permission or the devices/systems that I own myself. All these materials are for education and research purpose only. Do not use anything from here to break the law. The instructor, the authors and Networkwalks are not responsible for what you do with this knowledge. Every action you take is your own responsibility. Misuse can lead to criminal charges, heavy fines, loss of your job and a permanent record. In most countries unauthorized access is a crime even when nothing is damaged.
 
-# Table of Contents
+## Table of Contents
 1.	Executive Summary
 2.	Assessment Scope and Authorization
 3.	Assessment Methodology and Tools
@@ -16,7 +22,7 @@ I have performed these activities only on the systems & devices where I had secu
 9.	Conclusion
 10.	Assessor Declaration 
 
-# 1. EXECUTIVE SUMMARY
+## 1. EXECUTIVE SUMMARY
 This report documents the results of an authorized cybersecurity assessment conducted as part of the Networkwalks cybersecurity training programme.
 
 The assessment focused on two foundational penetration testing phases:
@@ -25,7 +31,7 @@ The assessment focused on two foundational penetration testing phases:
 The assessment involved an external reconnaissance exercise against Networkwalks.com and an internal network discovery exercise within a VMware virtual laboratory.
 The primary objective was to identify publicly observable website infrastructure, technologies, DNS configuration, security controls and active devices within the authorized internal network.
 
-# 1.1 External Assessment Summary
+## 1.1 External Assessment Summary
 The external assessment identified the following technologies and infrastructure characteristics:
 
 •	Domain registration through GoDaddy.
@@ -52,7 +58,7 @@ The external assessment identified the following technologies and infrastructure
 
 No confirmed exploitable vulnerabilities were established from the supplied evidence.
 
-# 1.2 Internal Network Assessment Summary
+## 1.2 Internal Network Assessment Summary
 An internal host discovery assessment was conducted against:
 
 Authorized laboratory network
@@ -75,14 +81,14 @@ The scan identified:
 
 The results provided an initial overview of the virtual laboratory network.
 
-# 1.3 Overall Assessment
+## 1.3 Overall Assessment
 The assessment successfully achieved its objectives for reconnaissance, footprinting and initial network discovery.
 
 However, the activities did not include comprehensive service enumeration, authenticated testing, vulnerability verification or exploitation.
 
 Consequently, the findings should be interpreted as preliminary security observations rather than a complete determination of the security posture of the assessed systems.
 
-# 2. ASSESSMENT SCOPE AND AUTHORIZATION
+## 2. ASSESSMENT SCOPE AND AUTHORIZATION
 
 2.1 Assessment Targets
 
@@ -94,7 +100,7 @@ Two environments were included in the assessment.
 | 192.168.113.0/24 | Internal network discovery | 
 | VMware virtual laboratory | Internal testing environment |
 
-# 2.2 Authorization
+## 2.2 Authorization
 
 The assessment was performed on systems for which written authorization had been obtained or within the assessor's own laboratory environment.
 
@@ -106,7 +112,7 @@ The assessment was performed on systems for which written authorization had been
 | Exploitation | Not performed | 
 | Authenticated testing | Not performed |
 
-# 2.3 Assessment Objectives
+## 2.3 Assessment Objectives
 
 The objectives were to:
 
@@ -120,11 +126,11 @@ The objectives were to:
 8.	Visualize the discovered network topology.
 9.	Document observations and security improvement opportunities.
 
-# 3. ASSESSMENT METHODOLOGY AND TOOLS
+## 3. ASSESSMENT METHODOLOGY AND TOOLS
 
 The assessment followed a structured reconnaissance and network discovery methodology.
 
-# 3.1 Tools Used	
+## 3.1 Tools Used	
 	
 | Tool | Purpose | 
 |------|---------|
@@ -138,7 +144,7 @@ The assessment followed a structured reconnaissance and network discovery method
 | Zenmap | Graphical network scanning and topology visualization |
 | Kali Linux | Security assessment environment |
 
-# 3.2 Assessment Phases
+## 3.2 Assessment Phases
 
 Phase 1 – Reconnaissance and Footprinting
 
@@ -164,19 +170,19 @@ Phase 5 – Reporting and Remediation Validation
 
 In progress
 
-# 4. PHASE 1 – EXTERNAL RECONNAISSANCE AND FOOTPRINTING
+## 4. PHASE 1 – EXTERNAL RECONNAISSANCE AND FOOTPRINTING
 
 The external assessment focused on collecting publicly observable information about the target domain, website technologies, hosting infrastructure, DNS records and HTTP security configuration.
 
 No exploitation or authenticated penetration testing was performed.
 
-# 4.1 WHOIS Domain Investigation
+## 4.1 WHOIS Domain Investigation
 
 Tool: WHOIS
 
 Command executed: whois networkwalks.com
 
-# Results
+## Results
 
 ![image alt](https://github.com/lovemorechamboko/PENETRATION-TESTING-REPORT/blob/b7fd350bec236445e50235f3bde417d9af370af9/Whois.png)	
 
@@ -208,7 +214,7 @@ Recommendation
 
 Evidence: Screenshot 1 – WHOIS results.
 
-# 4.2 Website Technology Identification
+## 4.2 Website Technology Identification
 
 Tool: WhatWeb
 
@@ -242,7 +248,7 @@ Recommendations
 
 Evidence: Screenshot 2 – WhatWeb results.
 
-# 4.3 Web Application Firewall Detection
+## 4.3 Web Application Firewall Detection
 
 Tool: WAFW00F
 
@@ -272,7 +278,7 @@ Recommendations
 
 Evidence: Screenshot 3 – WAFW00F results.
 
-# 4.4 DNS Resolution
+## 4.4 DNS Resolution
 
 Tool: NSLookup
 
@@ -300,13 +306,13 @@ Recommendations
 
 Evidence: Screenshot 4 – NSLookup results.
 
-# 4.5 DNS Enumeration
+## 4.5 DNS Enumeration
 
 Command executed: dnsrecon -d networkwalks.com
 
 ![image alt](https://github.com/lovemorechamboko/PENETRATION-TESTING-REPORT/blob/43b9e2288cf17debc170481c0a2e913024c1d41b/dnsrecon.png)
 
-# SPF Record
+## SPF Record
 
 The supplied assessment identified the following SPF string:
 
@@ -342,7 +348,7 @@ Recommendations
 
 Evidence: Screenshot 5 – DNSRecon results.
 
-# 4.6 HTTP Response Header Analysis
+## 4.6 HTTP Response Header Analysis
 
 Tool: cURL
 
@@ -358,7 +364,7 @@ Other observed information included:
 
 •	WordPress REST API references.
 
-# A. Security Header Assessment
+## A. Security Header Assessment
 
 The supplied response included Permissions-Policy and Referrer-Policy.
 
@@ -370,7 +376,7 @@ The following headers were not observed in the supplied response:
 
 •	X-Content-Type-Options.
 
-# Potential impact
+## Potential impact
 
 Depending on application behavior and browser configuration, missing security headers may reduce protection against certain browser-side attacks.
 
@@ -388,7 +394,7 @@ Recommendations
 
 •	Validate headers across multiple relevant application responses.
 
-# B. Cookie Security Assessment
+## B. Cookie Security Assessment
 
 The supplied response identified the cookie:
 
@@ -408,13 +414,13 @@ Observation
 
 Secure and HttpOnly are useful cookie security attributes. The SameSite configuration should be reviewed.
 
-# Risk classification: Informational.
+## Risk classification: Informational.
 
 Recommendation
 
 Evaluate an appropriate SameSite policy while ensuring that legitimate website functionality is maintained.
 
-# C. WordPress REST API Exposure
+## C. WordPress REST API Exposure
 
 The response referenced:
 
@@ -436,7 +442,7 @@ Public availability of a WordPress REST API endpoint is not, by itself, a securi
 
 legitimately expose published website information.
 
-# Potential impact
+## Potential impact
 
 Improperly configured API permissions could expose information that should not be publicly accessible.
 
@@ -452,7 +458,7 @@ Recommendations
 
 Risk classification: Informational.
 
-# D. Additional HTTP Information
+## D. Additional HTTP Information
 
 The response also contained:
 
@@ -468,7 +474,7 @@ No confirmed security vulnerability was established from these headers.
 
 Evidence: Screenshot 6 – cURL HTTP response headers.
 
-# 4.7 External Assessment Findings
+## 4.7 External Assessment Findings
 
 The external reconnaissance exercise identified several security configuration areas that warrant further review.	
 	
@@ -482,7 +488,7 @@ The external reconnaissance exercise identified several security configuration a
 | EXT-06 | ModSecurity WAF detected | Positive control |
 | EXT-07 | WordPress REST API publicly advertised | Informational |
 
-# 5. PHASE 2 – INTERNAL NETWORK DISCOVERY
+## 5. PHASE 2 – INTERNAL NETWORK DISCOVERY
 
 Assessment type: Internal network discovery and host identification.
 
@@ -492,7 +498,7 @@ Environment: VMware Virtual Lab.
 
 Tool: Nmap 7.993 / Zenmap.
 
-# 5.1 Assessment Overview
+## 5.1 Assessment Overview
 
 An internal network discovery assessment was conducted against the following subnet:
 
@@ -502,7 +508,7 @@ text
 
 The primary objective was to identify active hosts within the authorized laboratory network and obtain an initial understanding of the network environment.
 
-# 5.2 Target Network Information
+## 5.2 Target Network Information
 
 | Parameter | Value |
 |------|---------|
@@ -515,7 +521,7 @@ The primary objective was to identify active hosts within the authorized laborat
 | Tool | Nmap 7.993 |
 | Interface | Zenmap GUI |
 
-# 5.3 Host Discovery Methodology
+## 5.3 Host Discovery Methodology
 
 The assessment used Nmap host discovery.
 
@@ -529,7 +535,7 @@ The purpose was to identify responding devices within the specified subnet.
 
 The assessment also collected MAC address information where available.
 
-# 5.4 Active Hosts Identified
+## 5.4 Active Hosts Identified
 
 The scan identified seven active IP addresses.
 
@@ -555,7 +561,7 @@ The address 192.168.113.1 was also identified as active, although its MAC addres
 
 The results suggest that the laboratory contains multiple virtualized devices.
 
-# 5.5 Scan Statistics
+## 5.5 Scan Statistics
 	
 | Metric | Result |
 |------|---------|
@@ -569,7 +575,7 @@ The results suggest that the laboratory contains multiple virtualized devices.
 
 The remaining 249 addresses were not identified as responding hosts during this particular scan. This does not independently prove that all those addresses are unused.
 
-# 5.6 Network Topology Analysis
+## 5.6 Network Topology Analysis
 
 The Zenmap Topology feature was used to visualize the discovered hosts and their relationship to the local scanning machine.
 
@@ -599,7 +605,7 @@ The topology should not be interpreted as definitive evidence of the physical ne
 
 Evidence: Screenshot 8 – Zenmap network topology.
 
-# 5.7 Internal Network Security Findings
+## 5.7 Internal Network Security Findings
 
 Finding INT-01: Multiple Active Devices Identified
 
@@ -671,7 +677,7 @@ Recommendations
 
 •	Document confirmed service information.
 
-# 5.8 Internal Assessment Conclusion
+## 5.8 Internal Assessment Conclusion
 
 The internal network discovery assessment successfully identified seven active hosts within the authorized VMware laboratory subnet.
 
@@ -681,7 +687,7 @@ However, service exposure, operating system details and vulnerabilities remain u
 
 Further authorized assessment is required to establish the security posture of individual devices.
 
-# 6. CONSOLIDATED SECURITY FINDINGS
+## 6. CONSOLIDATED SECURITY FINDINGS
 
 The following table consolidates the observations from both assessment environments.
 
@@ -698,7 +704,7 @@ The following table consolidates the observations from both assessment environme
 | INT-02 | Six VMware-associated MAC addresses identified | Informational |
 | INT-03 | Service-level visibility remains limited | Observation |
 
-# 6.1 Overall Risk Assessment
+## 6.1 Overall Risk Assessment
 
 Based on the evidence supplied:
 
@@ -714,11 +720,11 @@ Based on the evidence supplied:
 
 Important: These classifications represent preliminary observations, not a complete vulnerability assessment.
 
-# 7. REMEDIATION RECOMMENDATIONS
+## 7. REMEDIATION RECOMMENDATIONS
 
 The following recommendations are intended to improve the security posture of the assessed environments.
 
-## Priority 1 – Application Security
+### Priority 1 – Application Security
 
 •	Verify WordPress core version and patch status.
 
@@ -734,7 +740,7 @@ The following recommendations are intended to improve the security posture of th
 
 •	Maintain regular application backups.
 
-## Priority 2 – Infrastructure Security
+### Priority 2 – Infrastructure Security
 
 •	Evaluate DNSSEC implementation.
 
@@ -750,7 +756,7 @@ The following recommendations are intended to improve the security posture of th
 
 •	Review virtual machine network segmentation.
 
-## Priority 3 – Email Security
+### Priority 3 – Email Security
 
 •	Verify SPF configuration.
 
@@ -762,7 +768,7 @@ The following recommendations are intended to improve the security posture of th
 
 •	Monitor email authentication reports.
 
-## Priority 4 – Continuous Monitoring
+### Priority 4 – Continuous Monitoring
 
 •	Perform regular authorized vulnerability assessments.
 
@@ -776,11 +782,11 @@ The following recommendations are intended to improve the security posture of th
 
 •	Conduct periodic security reviews.
 
-# 8. ASSESSMENT LIMITATIONS
+## 8. ASSESSMENT LIMITATIONS
 
 The following limitations apply to this assessment.
 
-# 8.1 External Assessment Limitations
+## 8.1 External Assessment Limitations
 
 1.	The external assessment was limited to passive reconnaissance and basic configuration inspection.
 
@@ -796,7 +802,7 @@ The following limitations apply to this assessment.
 
 7.	HTTP header observations were based on the supplied response evidence.
 
-# 8.2 Internal Assessment Limitations
+## 8.2 Internal Assessment Limitations
 
 1.	Only host discovery was performed.
 
@@ -814,7 +820,7 @@ The following limitations apply to this assessment.
 
 The absence of identified vulnerabilities must not be interpreted as evidence that the assessed systems are completely secure.
 
-# 9. CONCLUSION
+## 9. CONCLUSION
 
 The authorized cybersecurity assessment of Networkwalks.com and the internal VMware laboratory successfully completed the foundational activities associated with reconnaissance, footprinting and network discovery.
 The external assessment identified the website's publicly observable technologies, hosting associations, DNS configuration and selected HTTP security controls.
@@ -826,7 +832,7 @@ The Zenmap topology visualization provided an initial graphical representation o
 Although the assessment achieved its objectives for the first two phases, additional work is required to establish the security posture of the identified systems.
 Future assessments should include authorized enumeration, service configuration review, vulnerability verification, access-control testing and remediation validation.
 
-# FINAL ASSESSMENT STATUS
+## FINAL ASSESSMENT STATUS
 
 Phases 1 and 2 completed
 
@@ -842,7 +848,7 @@ Phases 1 and 2 completed
 
 Overall conclusion: Preliminary external reconnaissance and internal network discovery successfully completed. Further authorized security testing is recommended.
 
-# 10. ASSESSOR DECLARATION
+## 10. ASSESSOR DECLARATION
 
 I, Lovemore Chamboko, confirm that this report documents the activities and observations from the cybersecurity assessment conducted as part of the Networkwalks training programme.
 
@@ -852,7 +858,7 @@ The findings presented in this document are based on the available command outpu
 
 I acknowledge that further validation is required before making definitive conclusions about the security posture of the assessed systems.
 
-## END OF REPORT
+### END OF REPORT
 
 NETWORKWALKS CYBERSECURITY PROGRAMME
 
