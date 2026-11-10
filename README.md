@@ -65,10 +65,11 @@ The command executed was: nmap -sn 192.168.113.0/24
 
 The scan identified:
 
-Metric	Result
-Total IPv4 addresses	256
-Active hosts identified	7
-Scan duration	7.93 seconds
-MAC addresses displayed	6
-Identified VMware MAC vendors	6
+| Metric | Result | 
+|------|---------|
+| Total IPv4 addresses | 256 | 
+| Active hosts identified | 7 | 
+| Scan duration | 7.93 seconds |
+| MAC addresses displayed | 6 |
+| Identified VMware MAC vendors | 6 | 
 
