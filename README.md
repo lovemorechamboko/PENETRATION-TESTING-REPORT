@@ -214,4 +214,38 @@ Tool: WhatWeb
 
 Command executed: whatweb networkwalks.com
 
+![image alt](https://github.com/lovemorechamboko/PENETRATION-TESTING-REPORT/blob/0074b62c1f83ad58a61983c8aeaf4f8b8c40e15d/Whatweb.png)
+
+Note: These are technology-fingerprinting results, not independently verified installed software versions. The reported version strings, particularly Bootstrap 7.1.4, should be validated against the actual components before being treated as confirmed versions.
+
+Observation
+
+The website appears to operate using WordPress and includes a download management plugin.
+
+Technology fingerprinting can reveal information about the application's software stack. However, identifying a technology or version does not automatically establish that it is vulnerable.
+
+Risk classification: Requires further validation.
+
+Recommendations
+
+•	Verify WordPress core version and patch status.
+
+•	Review installed plugin and theme versions.
+
+•	Remove unused plugins and themes.
+
+•	Restrict administrative access.
+
+•	Maintain regular backups.
+
+•	Monitor relevant security advisories.
+
+Evidence: Screenshot 2 – WhatWeb results.
+
+# 4.3 Web Application Firewall Detection
+
+Tool: WAFW00F
+
+Command executed: wafw00f networkwalks.com
+
 ![image alt]()
