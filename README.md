@@ -470,16 +470,17 @@ Evidence: Screenshot 6 – cURL HTTP response headers.
 
 # 4.7 External Assessment Findings
 
-The external reconnaissance exercise identified several security configuration areas that warrant further review.
-
-ID	Finding	Classification
-EXT-01	DNSSEC reported unsigned	Low
-EXT-02	Domain registrant privacy protection	Informational
-EXT-03	WordPress and plugin versions require verification	To be validated
-EXT-04	DKIM and DMARC not verified	To be validated
-EXT-05	HTTP security headers require further review	To be validated
-EXT-06	ModSecurity WAF detected	Positive control
-EXT-07	WordPress REST API publicly advertised	Informational
+The external reconnaissance exercise identified several security configuration areas that warrant further review.	
+	
+| ID | Finding | Classification |
+|------|---------|----------|
+| EXT-01 | DNSSEC reported unsigned | Low |
+| EXT-02 | Domain registrant privacy protection | Informational |
+| EXT-03 | WordPress and plugin versions require verification | To be validated |
+| EXT-04 | DKIM and DMARC not verified | To be validated |
+| EXT-05 | HTTP security headers require further review | To be validated |
+| EXT-06 | ModSecurity WAF detected | Positive control |
+| EXT-07 | WordPress REST API publicly advertised | Informational |
 
 # 5. PHASE 2 – INTERNAL NETWORK DISCOVERY
 
@@ -503,15 +504,16 @@ The primary objective was to identify active hosts within the authorized laborat
 
 # 5.2 Target Network Information
 
-Parameter	Value
-Target network	192.168.113.0/24
-Network address	192.168.113.0
-Broadcast address	192.168.113.255
-Subnet mask	255.255.255.0
-Total IPv4 addresses	256
-Assessment type	Host discovery
-Tool	Nmap 7.993
-Interface	Zenmap GUI
+| Parameter | Value |
+|------|---------|
+| Target network | 192.168.113.0/24 |
+| Network address | 192.168.113.0 |
+| Broadcast address | 192.168.113.255 |
+| Subnet mask | 255.255.255.0 |
+| Total IPv4 addresses | 256 |
+| Assessment type | Host discovery |
+| Tool | Nmap 7.993 |
+| Interface | Zenmap GUI |
 
 # 5.3 Host Discovery Methodology
 
@@ -519,7 +521,7 @@ The assessment used Nmap host discovery.
 
 Command executed: nmap -sn 192.168.113.0/24
 
-![image alt]()
+![image alt](https://github.com/lovemorechamboko/PENETRATION-TESTING-REPORT/blob/58fce7ef3159bfbd4e6c8785ba01c08951b972a6/Screenshot%202026-11-10%20000133.png)
 
 The -sn option instructs Nmap to perform host discovery without conducting a port scan.
 
@@ -531,14 +533,15 @@ The assessment also collected MAC address information where available.
 
 The scan identified seven active IP addresses.
 
-No.	IP address	Status	MAC address
-1	192.168.113.1	Up	Not displayed
-2	192.168.113.129	Up	00:0C:29:3C:74:CB
-3	192.168.113.130	Up	00:0C:29:51:CF:5F
-4	192.168.113.136	Up	00:0C:29:E0:2A:84
-5	192.168.113.155	Up	00:0C:29:D9:05:94
-6	192.168.113.162	Up	00:0C:29:5A:6B:9E
-7	192.168.113.254	Up	00:50:56:E1:F0:17
+| No. | IP address | Status | MAC address |
+|------|---------|---------|--------|
+| 1 | 192.168.113.1 | Up | Not displayed |
+| 2 | 192.168.113.129 | Up | 00:0C:29:3C:74:CB |
+| 3 | 192.168.113.130 | Up | 00:0C:29:51:CF:5F |
+| 4 | 192.168.113.136 | Up | 00:0C:29:E0:2A:84 |
+| 5 | 192.168.113.155 | Up | 00:0C:29:D9:05:94 |
+| 6 | 192.168.113.162 | Up | 00:0C:29:5A:6B:9E |
+| 7 | 192.168.113.254 | Up | 00:50:56:E1:F0:17 |
 
 Observation
 
@@ -553,15 +556,16 @@ The address 192.168.113.1 was also identified as active, although its MAC addres
 The results suggest that the laboratory contains multiple virtualized devices.
 
 # 5.5 Scan Statistics
-
-Metric	Result
-Total addresses in subnet	256
-Active hosts identified	7
-MAC addresses displayed	6
-VMware-associated MAC addresses	6
-Scan duration	Approximately 7.93 seconds
-Nmap version	7.993
-Scan type	Ping scan
+	
+| Metric | Result |
+|------|---------|
+| Total addresses in subnet | 256 |
+| Active hosts identified | 7 |
+| MAC addresses displayed | 6 |
+| VMware-associated MAC addresses | 6 |
+| Scan duration | Approximately 7.93 seconds |
+| Nmap version | 7.993 |
+| Scan type | Ping scan |
 
 The remaining 249 addresses were not identified as responding hosts during this particular scan. This does not independently prove that all those addresses are unused.
 
@@ -569,7 +573,7 @@ The remaining 249 addresses were not identified as responding hosts during this 
 
 The Zenmap Topology feature was used to visualize the discovered hosts and their relationship to the local scanning machine.
 
-![image alt]()
+![image alt](https://github.com/lovemorechamboko/PENETRATION-TESTING-REPORT/blob/58fce7ef3159bfbd4e6c8785ba01c08951b972a6/Screenshot%202026-11-10%20001048.png)
 
 The topology displayed the following addresses:
 
