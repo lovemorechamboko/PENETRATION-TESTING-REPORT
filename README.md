@@ -685,17 +685,18 @@ Further authorized assessment is required to establish the security posture of i
 
 The following table consolidates the observations from both assessment environments.
 
-Finding ID	Description	Classification
-EXT-01	DNSSEC reported unsigned	Low
-EXT-02	Domain registration privacy protection	Informational
-EXT-03	WordPress and plugin maintenance requires verification	To be validated
-EXT-04	DKIM and DMARC not verified	To be validated
-EXT-05	HTTP security headers require further review	To be validated
-EXT-06	ModSecurity WAF detected	Positive control
-EXT-07	WordPress REST API publicly advertised	Informational
-INT-01	Seven active internal hosts identified	Informational
-INT-02	Six VMware-associated MAC addresses identified	Informational
-INT-03	Service-level visibility remains limited	Observation
+| Finding ID | Description | Classification |
+|------|---------|---------|
+| EXT-01 | DNSSEC reported unsigned | Low |
+| EXT-02 | Domain registration privacy protection | Informational |
+| EXT-03 | WordPress and plugin maintenance requires verification | To be validated |
+| EXT-04 | DKIM and DMARC not verified | To be validated |
+| EXT-05 | HTTP security headers require further review | To be validated |
+| EXT-06 | ModSecurity WAF detected | Positive control |
+| EXT-07 | WordPress REST API publicly advertised | Informational |
+| INT-01 | Seven active internal hosts identified | Informational |
+| INT-02 | Six VMware-associated MAC addresses identified | Informational |
+| INT-03 | Service-level visibility remains limited | Observation |
 
 # 6.1 Overall Risk Assessment
 
@@ -717,7 +718,7 @@ Important: These classifications represent preliminary observations, not a compl
 
 The following recommendations are intended to improve the security posture of the assessed environments.
 
-Priority 1 – Application Security
+## Priority 1 – Application Security
 
 •	Verify WordPress core version and patch status.
 
@@ -733,7 +734,7 @@ Priority 1 – Application Security
 
 •	Maintain regular application backups.
 
-Priority 2 – Infrastructure Security
+## Priority 2 – Infrastructure Security
 
 •	Evaluate DNSSEC implementation.
 
@@ -749,7 +750,7 @@ Priority 2 – Infrastructure Security
 
 •	Review virtual machine network segmentation.
 
-Priority 3 – Email Security
+## Priority 3 – Email Security
 
 •	Verify SPF configuration.
 
@@ -761,7 +762,7 @@ Priority 3 – Email Security
 
 •	Monitor email authentication reports.
 
-Priority 4 – Continuous Monitoring
+## Priority 4 – Continuous Monitoring
 
 •	Perform regular authorized vulnerability assessments.
 
