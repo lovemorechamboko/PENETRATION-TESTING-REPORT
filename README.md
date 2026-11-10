@@ -93,3 +93,89 @@ Two environments were included in the assessment.
 | [Total IPv4 addresses](https://networkwalks.com ) | External reconnaissance | 
 | 192.168.113.0/24 | Internal network discovery | 
 | VMware virtual laboratory | Internal testing environment |
+
+# 2.2 Authorization
+
+The assessment was performed on systems for which written authorization had been obtained or within the assessor's own laboratory environment.
+
+| Authorization item | Status | 
+|------|---------|
+| Client permission | Confirmed by assessor | 
+| Local LAN authorization | Assessor-owned environment | 
+| Assessment purpose | Educational and security research |
+| Exploitation | Not performed | 
+| Authenticated testing | Not performed |
+
+# 2.3 Assessment Objectives
+
+The objectives were to:
+
+1.	Identify publicly available domain registration information.
+2.	Identify website technologies and infrastructure.
+3.	Detect the presence of a web application firewall.
+4.	Review publicly observable DNS configuration.
+5.	Inspect selected HTTP response headers.
+6.	Identify active devices on the authorized internal network.
+7.	Examine available MAC address vendor information.
+8.	Visualize the discovered network topology.
+9.	Document observations and security improvement opportunities.
+
+# 3. ASSESSMENT METHODOLOGY AND TOOLS
+
+The assessment followed a structured reconnaissance and network discovery methodology.
+
+# 3.1 Tools Used	
+	
+| Tool | Purpose | 
+|------|---------|
+| WHOIS | Domain registration investigation | 
+| WhatWeb | Website technology fingerprinting | 
+| WAFW00F | Web application firewall detection |
+| NSLookup | DNS resolution | 
+| DNSRecon | DNS record enumeration |
+| cURL | HTTP response inspection |
+| Nmap 7.993 | Network host discovery |
+| Zenmap | Graphical network scanning and topology visualization |
+| Kali Linux | Security assessment environment |
+
+# 3.2 Assessment Phases
+
+Phase 1 – Reconnaissance and Footprinting
+
+Completed
+
+Public information gathering, domain research, technology identification and DNS inspection.
+
+Phase 2 – Scanning and Network Discovery
+
+Completed
+
+Internal host discovery, MAC address identification and topology visualization.
+
+Phase 3 – Enumeration
+
+In progress
+
+Phase 4 – Vulnerability Assessment
+
+Pending
+
+Phase 5 – Reporting and Remediation Validation
+
+In progress
+
+# 4. PHASE 1 – EXTERNAL RECONNAISSANCE AND FOOTPRINTING
+
+The external assessment focused on collecting publicly observable information about the target domain, website technologies, hosting infrastructure, DNS records and HTTP security configuration.
+
+No exploitation or authenticated penetration testing was performed.
+
+# 4.1 WHOIS Domain Investigation
+
+Tool: WHOIS
+
+Command executed: whois networkwalks.com
+
+# Results
+
+![image alt]()
