@@ -178,4 +178,40 @@ Command executed: whois networkwalks.com
 
 # Results
 
-![image alt](https://github.com/lovemorechamboko/PENETRATION-TESTING-REPORT/blob/b7fd350bec236445e50235f3bde417d9af370af9/Whois.png)
+![image alt](https://github.com/lovemorechamboko/PENETRATION-TESTING-REPORT/blob/b7fd350bec236445e50235f3bde417d9af370af9/Whois.png)	
+
+| Parameter | Identified information | 
+|------|---------|
+| Registrar | GoDaddy.com, LLC | 
+| Creation date | 6 November 2019 | 
+| Expiration date | 6 November 2027 | 
+| Registrant | Registration Private | 
+| Privacy provider | Domains By Proxy, LLC | 
+| DNSSEC | Unsigned | 
+
+Observation
+
+The domain registration information indicates that the registrant's identity is protected through a domain privacy service.
+
+The supplied WHOIS results also indicate that DNSSEC signing was not enabled at the time of the investigation.
+Risk classification: Informational.
+
+Recommendation
+
+•	Maintain accurate domain registration information.
+
+•	Ensure authorized personnel control domain administration.
+
+•	Monitor domain renewal dates.
+
+•	Evaluate DNSSEC deployment.
+
+Evidence: Screenshot 1 – WHOIS results.
+
+# 4.2 Website Technology Identification
+
+Tool: WhatWeb
+
+Command executed: whatweb networkwalks.com
+
+![image alt]()
