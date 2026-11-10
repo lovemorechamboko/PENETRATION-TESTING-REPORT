@@ -248,4 +248,227 @@ Tool: WAFW00F
 
 Command executed: wafw00f networkwalks.com
 
-![image alt]()
+![image alt](https://github.com/lovemorechamboko/PENETRATION-TESTING-REPORT/blob/43b9e2288cf17debc170481c0a2e913024c1d41b/wafw00f.png)
+
+Observation
+
+The assessment detected ModSecurity, indicating the presence of a web application firewall.
+
+A WAF can provide an additional security layer by inspecting and filtering web requests. However, its presence does not guarantee that the underlying application is secure.
+
+Assessment classification: Positive security control identified.
+
+Recommendations
+
+•	Maintain updated WAF rules.
+
+•	Monitor security logs.
+
+•	Review blocked requests.
+
+•	Periodically assess rule effectiveness.
+
+•	Verify that legitimate application traffic is not unnecessarily blocked.
+
+Evidence: Screenshot 3 – WAFW00F results.
+
+# 4.4 DNS Resolution
+
+Tool: NSLookup
+
+Command executed: nslookup networkwalks.com
+
+![image alt](https://github.com/lovemorechamboko/PENETRATION-TESTING-REPORT/blob/43b9e2288cf17debc170481c0a2e913024c1d41b/nslookup.png)
+
+Observation
+
+The domain successfully resolved to the identified public IPv4 address.
+
+The DNS server displayed in the results was the local resolver at 192.168.1.1.
+
+Risk classification: Informational.
+
+Recommendations
+
+•	Monitor DNS availability.
+
+•	Maintain accurate DNS records.
+
+•	Review DNS provider security.
+
+•	Ensure that only authorized administrators can modify DNS records.
+
+Evidence: Screenshot 4 – NSLookup results.
+
+# 4.5 DNS Enumeration
+
+Command executed: dnsrecon -d networkwalks.com
+
+![image alt](https://github.com/lovemorechamboko/PENETRATION-TESTING-REPORT/blob/43b9e2288cf17debc170481c0a2e913024c1d41b/dnsrecon.png)
+
+# SPF Record
+
+The supplied assessment identified the following SPF string:
+
+text
+
+v=spf1 +a +mx +ip4:50.87.144.87 +include: websitewelcome.com ~all
+
+Observation
+
+The results indicate that the domain uses HostGator-associated nameservers and has an SPF record.
+
+DNSSEC was reported as unsigned.
+
+DKIM and DMARC were not verified during the documented assessment.
+
+The supplied SPF string should also be checked against the authoritative DNS TXT record because its displayed include: syntax appears incomplete or malformed.
+
+Risk classification: Low – configuration review recommended.
+
+Recommendations
+
+1.	Evaluate DNSSEC deployment.
+
+2.	Verify the SPF record syntax and authorized sending infrastructure.
+
+3.	Configure DKIM signing where applicable.
+
+4.	Implement an appropriate DMARC policy.
+
+5.	Review DNS delegation consistency.
+
+6.	Monitor email authentication reports.
+
+Evidence: Screenshot 5 – DNSRecon results.
+
+# 4.6 HTTP Response Header Analysis
+
+Tool: cURL
+
+Command executed: curl -I https://networkwalks.com
+
+![image alt](https://github.com/lovemorechamboko/PENETRATION-TESTING-REPORT/blob/43b9e2288cf17debc170481c0a2e913024c1d41b/curl.png)
+
+Other observed information included:
+
+•	X-Endurance-Cache-Level: 0
+
+•	X-Nginx-Cache: WordPress
+
+•	WordPress REST API references.
+
+# A. Security Header Assessment
+
+The supplied response included Permissions-Policy and Referrer-Policy.
+
+The following headers were not observed in the supplied response:
+
+•	Strict-Transport-Security (HSTS).
+
+•	Content-Security-Policy (CSP).
+
+•	X-Content-Type-Options.
+
+# Potential impact
+
+Depending on application behavior and browser configuration, missing security headers may reduce protection against certain browser-side attacks.
+
+Risk classification: Informational – further validation required.
+
+Recommendations
+
+•	Evaluate HSTS implementation.
+
+•	Develop an appropriate Content Security Policy.
+
+•	Configure X-Content-Type-Options: nosniff.
+
+•	Review frame protection through CSP or X-Frame-Options.
+
+•	Validate headers across multiple relevant application responses.
+
+# B. Cookie Security Assessment
+
+The supplied response identified the cookie:
+
+text
+
+wpdm_client
+
+Observed attributes:
+
+•	Secure.
+
+•	HttpOnly.
+
+The SameSite attribute was not observed in the supplied evidence.
+
+Observation
+
+Secure and HttpOnly are useful cookie security attributes. The SameSite configuration should be reviewed.
+
+# Risk classification: Informational.
+
+Recommendation
+
+Evaluate an appropriate SameSite policy while ensuring that legitimate website functionality is maintained.
+
+# C. WordPress REST API Exposure
+
+The response referenced:
+
+text
+
+https://networkwalks.com/wp-json/
+
+It also referenced:
+
+text
+
+https://networkwalks.com/wp-json/wp/v2/pages/53
+
+Observation
+
+The WordPress REST API is publicly advertised.
+
+Public availability of a WordPress REST API endpoint is not, by itself, a security vulnerability. Public endpoints may 
+
+legitimately expose published website information.
+
+# Potential impact
+
+Improperly configured API permissions could expose information that should not be publicly accessible.
+
+Recommendations
+
+•	Review publicly accessible API endpoints.
+
+•	Verify access permissions.
+
+•	Ensure sensitive information is not exposed.
+
+•	Review API authentication and authorization controls.
+
+Risk classification: Informational.
+
+# D. Additional HTTP Information
+
+The response also contained:
+
+•	X-Endurance-Cache-Level: 0.
+
+•	X-Nginx-Cache: WordPress.
+
+•	Server: Apache.
+
+These headers provide information about the hosting and caching environment.
+
+No confirmed security vulnerability was established from these headers.
+
+Evidence: Screenshot 6 – cURL HTTP response headers.
+
+# 4.7 External Assessment Findings
+
+The external reconnaissance exercise identified several security configuration areas that warrant further review.
+
