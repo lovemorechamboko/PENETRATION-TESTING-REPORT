@@ -178,4 +178,4 @@ Command executed: whois networkwalks.com
 
 # Results
 
-![image alt]()
+![image alt](https://github.com/lovemorechamboko/PENETRATION-TESTING-REPORT/blob/b7fd350bec236445e50235f3bde417d9af370af9/Whois.png)
