@@ -472,3 +472,388 @@ Evidence: Screenshot 6 – cURL HTTP response headers.
 
 The external reconnaissance exercise identified several security configuration areas that warrant further review.
 
+ID	Finding	Classification
+EXT-01	DNSSEC reported unsigned	Low
+EXT-02	Domain registrant privacy protection	Informational
+EXT-03	WordPress and plugin versions require verification	To be validated
+EXT-04	DKIM and DMARC not verified	To be validated
+EXT-05	HTTP security headers require further review	To be validated
+EXT-06	ModSecurity WAF detected	Positive control
+EXT-07	WordPress REST API publicly advertised	Informational
+
+# 5. PHASE 2 – INTERNAL NETWORK DISCOVERY
+
+Assessment type: Internal network discovery and host identification.
+
+Assessment date: 9 November 2026.
+
+Environment: VMware Virtual Lab.
+
+Tool: Nmap 7.993 / Zenmap.
+
+# 5.1 Assessment Overview
+
+An internal network discovery assessment was conducted against the following subnet:
+
+text
+
+192.168.113.0/24
+
+The primary objective was to identify active hosts within the authorized laboratory network and obtain an initial understanding of the network environment.
+
+# 5.2 Target Network Information
+
+Parameter	Value
+Target network	192.168.113.0/24
+Network address	192.168.113.0
+Broadcast address	192.168.113.255
+Subnet mask	255.255.255.0
+Total IPv4 addresses	256
+Assessment type	Host discovery
+Tool	Nmap 7.993
+Interface	Zenmap GUI
+
+# 5.3 Host Discovery Methodology
+
+The assessment used Nmap host discovery.
+
+Command executed: nmap -sn 192.168.113.0/24
+
+![image alt]()
+
+The -sn option instructs Nmap to perform host discovery without conducting a port scan.
+
+The purpose was to identify responding devices within the specified subnet.
+
+The assessment also collected MAC address information where available.
+
+# 5.4 Active Hosts Identified
+
+The scan identified seven active IP addresses.
+
+No.	IP address	Status	MAC address
+1	192.168.113.1	Up	Not displayed
+2	192.168.113.129	Up	00:0C:29:3C:74:CB
+3	192.168.113.130	Up	00:0C:29:51:CF:5F
+4	192.168.113.136	Up	00:0C:29:E0:2A:84
+5	192.168.113.155	Up	00:0C:29:D9:05:94
+6	192.168.113.162	Up	00:0C:29:5A:6B:9E
+7	192.168.113.254	Up	00:50:56:E1:F0:17
+
+Observation
+
+Seven hosts responded to the discovery scan.
+
+Six hosts had MAC addresses displayed in the captured Nmap output.
+
+The MAC vendor information identified all six displayed addresses as VMware-associated devices.
+
+The address 192.168.113.1 was also identified as active, although its MAC address was not displayed in the supplied output.
+
+The results suggest that the laboratory contains multiple virtualized devices.
+
+# 5.5 Scan Statistics
+
+Metric	Result
+Total addresses in subnet	256
+Active hosts identified	7
+MAC addresses displayed	6
+VMware-associated MAC addresses	6
+Scan duration	Approximately 7.93 seconds
+Nmap version	7.993
+Scan type	Ping scan
+
+The remaining 249 addresses were not identified as responding hosts during this particular scan. This does not independently prove that all those addresses are unused.
+
+# 5.6 Network Topology Analysis
+
+The Zenmap Topology feature was used to visualize the discovered hosts and their relationship to the local scanning machine.
+
+![image alt]()
+
+The topology displayed the following addresses:
+
+•	192.168.113.1
+
+•	192.168.113.129
+
+•	192.168.113.130
+
+•	192.168.113.136
+
+•	192.168.113.155
+
+•	192.168.113.162
+
+•	192.168.113.254
+
+Observation
+
+The visualization provided an initial graphical overview of the discovered laboratory devices.
+
+The topology should not be interpreted as definitive evidence of the physical network layout, routing relationships or open ports. Those details require separate verification.
+
+Evidence: Screenshot 8 – Zenmap network topology.
+
+# 5.7 Internal Network Security Findings
+
+Finding INT-01: Multiple Active Devices Identified
+
+Severity: Informational.
+
+Description
+
+Seven active hosts were identified within the target subnet.
+
+Security implication
+
+Active devices represent network assets that should be documented and managed.
+
+Unknown or unauthorized devices may introduce security risks if they are not properly monitored.
+
+Recommendations
+
+•	Maintain an updated network asset inventory.
+
+•	Verify that discovered devices are authorized.
+
+•	Monitor network connectivity.
+
+•	Investigate unexpected devices.
+
+Finding INT-02: VMware-Associated Devices Identified
+
+Severity: Informational.
+
+Description
+
+Six discovered devices returned MAC addresses identified as VMware-associated.
+
+Security implication
+
+The results suggest the presence of multiple virtualized systems within the laboratory.
+
+Virtual machines should be configured with appropriate security controls and network segmentation.
+
+Recommendations
+
+•	Review virtual machine network configurations.
+
+•	Apply appropriate network segmentation.
+
+•	Maintain supported operating systems.
+
+•	Restrict unnecessary communication between virtual machines.
+
+Finding INT-03: Limited Service-Level Visibility
+
+Severity: Observation.
+
+Description
+
+The assessment used the -sn option, which performs host discovery without conducting TCP or UDP port scanning.
+
+Therefore, the assessment did not establish which network services were running on the discovered devices.
+
+Recommendations
+
+•	Conduct an authorized follow-up service assessment.
+
+•	Review exposed services.
+
+•	Identify unnecessary services.
+
+•	Evaluate firewall configurations.
+
+•	Document confirmed service information.
+
+# 5.8 Internal Assessment Conclusion
+
+The internal network discovery assessment successfully identified seven active hosts within the authorized VMware laboratory subnet.
+
+The assessment achieved its primary objective of identifying active devices and producing an initial network topology visualization.
+
+However, service exposure, operating system details and vulnerabilities remain undetermined.
+
+Further authorized assessment is required to establish the security posture of individual devices.
+
+# 6. CONSOLIDATED SECURITY FINDINGS
+
+The following table consolidates the observations from both assessment environments.
+
+Finding ID	Description	Classification
+EXT-01	DNSSEC reported unsigned	Low
+EXT-02	Domain registration privacy protection	Informational
+EXT-03	WordPress and plugin maintenance requires verification	To be validated
+EXT-04	DKIM and DMARC not verified	To be validated
+EXT-05	HTTP security headers require further review	To be validated
+EXT-06	ModSecurity WAF detected	Positive control
+EXT-07	WordPress REST API publicly advertised	Informational
+INT-01	Seven active internal hosts identified	Informational
+INT-02	Six VMware-associated MAC addresses identified	Informational
+INT-03	Service-level visibility remains limited	Observation
+
+# 6.1 Overall Risk Assessment
+
+Based on the evidence supplied:
+
+•	No critical vulnerabilities were confirmed.
+
+•	No high-severity vulnerabilities were confirmed.
+
+•	No medium-severity vulnerabilities were confirmed.
+
+•	Several low-risk configuration improvements were identified.
+
+•	Additional testing is required before a comprehensive security conclusion can be made.
+
+Important: These classifications represent preliminary observations, not a complete vulnerability assessment.
+
+# 7. REMEDIATION RECOMMENDATIONS
+
+The following recommendations are intended to improve the security posture of the assessed environments.
+
+Priority 1 – Application Security
+
+•	Verify WordPress core version and patch status.
+
+•	Review installed plugins and themes.
+
+•	Remove unused components.
+
+•	Enforce strong administrator passwords.
+
+•	Enable multi-factor authentication where supported.
+
+•	Review WordPress administrative permissions.
+
+•	Maintain regular application backups.
+
+Priority 2 – Infrastructure Security
+
+•	Evaluate DNSSEC implementation.
+
+•	Review DNS records and delegation.
+
+•	Verify HTTPS configuration.
+
+•	Review HTTP security headers.
+
+•	Monitor ModSecurity security logs.
+
+•	Maintain accurate network asset inventories.
+
+•	Review virtual machine network segmentation.
+
+Priority 3 – Email Security
+
+•	Verify SPF configuration.
+
+•	Configure DKIM.
+
+•	Implement an appropriate DMARC policy.
+
+•	Review authorized email-sending infrastructure.
+
+•	Monitor email authentication reports.
+
+Priority 4 – Continuous Monitoring
+
+•	Perform regular authorized vulnerability assessments.
+
+•	Maintain application and system backups.
+
+•	Review access logs.
+
+•	Monitor security advisories.
+
+•	Investigate unexpected network devices.
+
+•	Conduct periodic security reviews.
+
+# 8. ASSESSMENT LIMITATIONS
+
+The following limitations apply to this assessment.
+
+# 8.1 External Assessment Limitations
+
+1.	The external assessment was limited to passive reconnaissance and basic configuration inspection.
+
+2.	No authenticated application testing was performed.
+
+3.	No exploitation was attempted.
+
+4.	No comprehensive vulnerability assessment was performed.
+
+5.	Software version information was based on technology fingerprinting.
+
+6.	DNSSEC, DKIM and DMARC configurations require additional validation.
+
+7.	HTTP header observations were based on the supplied response evidence.
+
+# 8.2 Internal Assessment Limitations
+
+1.	Only host discovery was performed.
+
+2.	No TCP or UDP port scanning was conducted.
+
+3.	No service version detection was performed.
+
+4.	No operating system fingerprinting was confirmed.
+
+5.	No vulnerability scanning or exploitation was conducted.
+
+6.	No authentication or access-control testing was performed.
+
+7.	The results represent the observed network state at the time of scanning.
+
+The absence of identified vulnerabilities must not be interpreted as evidence that the assessed systems are completely secure.
+
+# 9. CONCLUSION
+
+The authorized cybersecurity assessment of Networkwalks.com and the internal VMware laboratory successfully completed the foundational activities associated with reconnaissance, footprinting and network discovery.
+The external assessment identified the website's publicly observable technologies, hosting associations, DNS configuration and selected HTTP security controls.
+The investigation identified Apache, WordPress, a WordPress Download Manager plugin and ModSecurity web application firewall protection.
+It also highlighted opportunities for improvement involving DNSSEC, email authentication, software maintenance verification and HTTP security headers.
+The internal network assessment successfully identified seven active hosts within the 192.168.113.0/24 subnet using Nmap 7.993 and Zenmap.
+Six displayed MAC addresses were identified as VMware-associated, suggesting the presence of multiple virtual machines in the laboratory.
+The Zenmap topology visualization provided an initial graphical representation of the discovered network.
+Although the assessment achieved its objectives for the first two phases, additional work is required to establish the security posture of the identified systems.
+Future assessments should include authorized enumeration, service configuration review, vulnerability verification, access-control testing and remediation validation.
+
+# FINAL ASSESSMENT STATUS
+
+Phases 1 and 2 completed
+
+•	Phase 1: Reconnaissance and Footprinting – Completed.
+
+•	Phase 2: Scanning and Network Discovery – Completed.
+
+•	Phase 3: Enumeration – In progress.
+
+•	Phase 4: Vulnerability Assessment – Pending.
+
+•	Phase 5: Reporting and Remediation Validation – In progress.
+
+Overall conclusion: Preliminary external reconnaissance and internal network discovery successfully completed. Further authorized security testing is recommended.
+
+# 10. ASSESSOR DECLARATION
+
+I, Lovemore Chamboko, confirm that this report documents the activities and observations from the cybersecurity assessment conducted as part of the Networkwalks training programme.
+
+The assessment activities were limited to authorized targets and the assessor's own laboratory environment.
+
+The findings presented in this document are based on the available command outputs, observations and evidence collected during the assessment.
+
+I acknowledge that further validation is required before making definitive conclusions about the security posture of the assessed systems.
+
+## END OF REPORT
+
+NETWORKWALKS CYBERSECURITY PROGRAMME
+
+W2-PM-FINAL | Version 1.0
+
+### Prepared by: Lovemore Chamboko
+
+### CONFIDENTIAL – AUTHORIZED DISTRIBUTION ONLY
+
